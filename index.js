@@ -10,6 +10,8 @@ var tray;
 var displayreminder=1;
 var committedtoday;
 
+var username="octalmage";
+
 // Give it a menu
 var menu = new gui.Menu();
 menu.append(new gui.MenuItem({label: 'Exit', click: function() 
@@ -57,7 +59,7 @@ function check()
 	console.log("check");
 	tasks.push(function(done)
 	{
-		var request = https.get("https://github.com/users/octalmage/contributions/", function(response)
+		var request = https.get("https://github.com/users/" + username + "/contributions/", function(response)
 		{
 
 			var file = fs.createWriteStream(".download.svg");
