@@ -57,7 +57,6 @@ function remind()
 
 function check()
 {
-	console.log("check");
 	tasks.push(function(done)
 	{
 		var request = https.get("https://github.com/users/" + username + "/contributions/", function(response)
