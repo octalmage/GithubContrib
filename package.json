@@ -1,0 +1,15 @@
+{
+  "name": "GithubContrib",
+  "main": "index.html",
+  "version": "0.0.1",
+  "window": {
+    "title": "GithubContrib",
+    "toolbar": true,
+    "frame": true,
+    "resizable": true,
+    "always-on-top": false,
+    "position": "center",
+    "show": true,
+    "show_in_taskbar": true
+  }
+}
