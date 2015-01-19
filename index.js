@@ -7,6 +7,7 @@ var fs = require("fs");
 var gui = require('nw.gui');
 
 var tray;
+var displayreminder=1;
 
 // Give it a menu
 var menu = new gui.Menu();
@@ -16,6 +17,12 @@ menu.append(new gui.MenuItem({label: 'Exit', click: function()
 }, }));
 
 var tasks = [];
+
+//Notify every hour. 
+setInterval(function setdisplayreminder()
+{
+	displayreminder=1;
+}, 3600000);
 
 setInterval(function checkcommits()
 {
@@ -91,7 +98,11 @@ function check()
 		else
 		{
 			makemenu("r");
-			remind();
+			if (displayreminder)
+			{
+				displayreminder=0;
+				remind();
+			}
 		}
 	});
 }
