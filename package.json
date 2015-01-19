@@ -9,7 +9,7 @@
     "resizable": true,
     "always-on-top": false,
     "position": "center",
-    "show": true,
-    "show_in_taskbar": true
+    "show": false,
+    "show_in_taskbar": false
   }
 }
