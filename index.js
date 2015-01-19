@@ -8,6 +8,7 @@ var gui = require('nw.gui');
 
 var tray;
 var displayreminder=1;
+var committedtoday;
 
 // Give it a menu
 var menu = new gui.Menu();
@@ -90,8 +91,12 @@ function check()
 
 	async.series(tasks, function(re)
 	{
-		count=re[re.length-1].count;
-		if (count<0)
+		oldcommittedtoday=committedtoday;
+		committedtoday=(re[re.length-1].count>0)
+
+		if (oldcommittedtoday==committedtoday) return;
+
+		if (committedtoday)
 		{
 			makemenu("b");
 		}
