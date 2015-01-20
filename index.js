@@ -96,11 +96,8 @@ function check()
 
 	async.series(tasks, function(re)
 	{
-		oldcommittedtoday=committedtoday;
 		committedtoday=(re[re.length-1].count>0)
-
-		if (oldcommittedtoday==committedtoday) return;
-
+	
 		if (committedtoday)
 		{
 			makemenu("b");
