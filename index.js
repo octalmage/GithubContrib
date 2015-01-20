@@ -100,11 +100,12 @@ function check()
 	
 		if (committedtoday)
 		{
-			makemenu("b");
+			if (tray.icon.indexOf("b")==-1) makemenu("b");
 		}
 		else
 		{
-			makemenu("r");
+			if (tray.icon.indexOf("r")==-1) makemenu("r");
+
 			if (displayreminder)
 			{
 				displayreminder=0;
