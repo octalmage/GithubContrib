@@ -30,7 +30,7 @@ setInterval(function setdisplayreminder()
 	displayreminder=1;
 }, 3600000);
 
-//Check GitHub every 10 minutes. 
+//Check GitHub every 5 minutes. 
 setInterval(function checkcommits()
 {
 	check();
