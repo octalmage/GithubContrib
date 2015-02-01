@@ -38,6 +38,10 @@ setInterval(function checkcommits()
 
 check();
 
+/**
+ * Changes the tray icon.
+ * @param  {string} color r for red, or b for blue.
+ */
 function makemenu(color)
 {
 	if (tray!=null)
@@ -48,6 +52,9 @@ function makemenu(color)
 	tray.menu = menu;
 }
 
+/**
+ * Display the commit reminder.
+ */
 function remind()
 {
 	var options = {
@@ -58,13 +65,16 @@ function remind()
 	var notification = new Notification("GithubContrib", options);
 }
 
+/**
+ * Checks GitHub for commits. 
+ */
 function check()
 {
+	//Download the contributions SVG to .download.svg.
 	tasks.push(function(done)
 	{
 		var request = https.get("https://github.com/users/" + username + "/contributions/", function(response)
 		{
-
 			var file = fs.createWriteStream(".download.svg");
 			response.pipe(file);
 
@@ -75,37 +85,51 @@ function check()
 		});
 	});
 
+	//Parse the SVG to find today's commits. 
 	tasks.push(function(done)
 	{
 		svg.fromSvgDocument("./.download.svg", function(err, svg)
 		{
 			if (err)
 			{
-				throw new Error("SVG file not found or invalid.");
+				done("SVG file not found or invalid.");
+				return;
 			}
 
 			var json = svg.toJSON();
-
+			
 			commits = jsonselect.match('.type:val("rect") ~ .data', json);
 
 			fs.unlinkSync('./.download.svg');
 
-			done(commits);
+			done(null, commits);
 		});
 	});
 
-	async.series(tasks, function(re)
+	async.series(tasks, function(err, results)
 	{
-		committedtoday=(re[re.length-1].count>0)
+		if (err)
+		{
+			console.log(err);
+			return;
+		}
+
+		//Grab the second result from the tasks. 
+		commits=results[1];
+
+		//Is the number of commits today greater than 0? 
+		committedtoday=(commits[commits.length-1].count>0)
 	
 		if (committedtoday)
 		{
+			//Only update the tray icon if there's a change. 
 			if (tray.icon.indexOf("b")==-1) makemenu("b");
 		}
 		else
 		{
 			if (tray.icon.indexOf("r")==-1) makemenu("r");
 
+			//Only display reminder if it's time. 
 			if (displayreminder)
 			{
 				displayreminder=0;
