@@ -1,8 +1,14 @@
 {
   "name": "GithubContrib",
+  "version": "0.0.2",
+  "description": "Daily commit reminder.",
   "main": "index.html",
-  "version": "0.0.1",
-  "window": {
+  "dependencies": {
+    "JSONSelect": "^0.4.0",
+    "async": "^0.9.0",
+    "svgutils": "^0.12.4"
+  },
+   "window": {
     "title": "GithubContrib",
     "toolbar": true,
     "frame": true,
@@ -11,5 +17,19 @@
     "position": "center",
     "show": false,
     "show_in_taskbar": false
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/octalmage/GithubContrib.git"
+  },
+  "keywords": [
+    "GitHub",
+    "Commits"
+  ],
+  "author": "Jason Stallings",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/octalmage/GithubContrib/issues"
+  },
+  "homepage": "https://github.com/octalmage/GithubContrib"
 }
