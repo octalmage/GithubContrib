@@ -19,7 +19,7 @@ menu.append(new gui.MenuItem({label: 'Exit', click: function()
     gui.App.quit();
 }, }));
 
-tray = new gui.Tray({ icon: "assets/images/iconb.png" });
+tray = new gui.Tray({ icon: "assets/images/iconb.png", iconsAreTemplates: false });
 tray.menu = menu;
 
 var tasks = [];
@@ -48,7 +48,7 @@ function makemenu(color)
 	{
 		tray.remove();
 	}
-	tray = new gui.Tray({ icon: "assets/images/icon" + color + ".png" });
+	tray = new gui.Tray({ icon: "assets/images/icon" + color + ".png",  iconsAreTemplates: false  });
 	tray.menu = menu;
 }
 
