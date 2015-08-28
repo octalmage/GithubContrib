@@ -44,7 +44,7 @@ check();
  */
 function makemenu(color)
 {
-	if (tray!=null)
+	if (tray !== null)
 	{
 		tray.remove();
 	}
@@ -118,7 +118,7 @@ function check()
 		commits=results[1];
 
 		//Is the number of commits today greater than 0? 
-		committedtoday=(commits[commits.length-1].count>0)
+		committedtoday=(commits[commits.length-1].count>0);
 	
 		if (committedtoday)
 		{
