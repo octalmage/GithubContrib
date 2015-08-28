@@ -8,7 +8,7 @@
     "async": "^0.9.0",
     "svgutils": "^0.12.4"
   },
-   "window": {
+  "window": {
     "title": "GithubContrib",
     "toolbar": true,
     "frame": true,
